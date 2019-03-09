@@ -13,16 +13,22 @@ function getQuadraticBezierXYatPercent (start, control, end, percent) {
 }
 
 function getCubicBezierXYatPercent (start, end, control1, control2, percent) {
-  const x = CubicN(percent, start.x, control1.x, control2.x, end.x)
-  const y = CubicN(percent, start.y, control1.y, control2.y, end.y)
+  const x = cubicN(percent, start.x, control1.x, control2.x, end.x)
+  const y = cubicN(percent, start.y, control1.y, control2.y, end.y)
   return ({ x: x, y: y })
 }
 
-function CubicN (pct, a, b, c, d) {
+function cubicN (pct, a, b, c, d) {
   const t2 = pct * pct
   const t3 = t2 * pct
   return a + (-a * 3 + pct * (3 * a - a * pct)) * pct +
   (3 * b + pct * (-6 * b + b * 3 * pct)) * pct +
   (c * 3 - c * 3 * pct) * t2 +
   d * t3
+}
+
+export default {
+  getLine: getLineXYatPercent,
+  getQuadratic: getQuadraticBezierXYatPercent,
+  getCubic: getCubicBezierXYatPercent
 }
