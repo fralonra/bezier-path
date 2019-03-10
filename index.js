@@ -6,7 +6,7 @@ function getLineXYatPercent (start, end, percent) {
   return ({ x: X, y: Y })
 }
 
-function getQuadraticBezierXYatPercent (start, control, end, percent) {
+function getQuadraticBezierXYatPercent (start, end, control, percent) {
   const x = Math.pow(1 - percent, 2) * start.x + 2 * (1 - percent) * percent * control.x + Math.pow(percent, 2) * end.x
   const y = Math.pow(1 - percent, 2) * start.y + 2 * (1 - percent) * percent * control.y + Math.pow(percent, 2) * end.y
   return ({ x: x, y: y })
